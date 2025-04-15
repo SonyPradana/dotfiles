@@ -15,7 +15,9 @@ echo "===> Setting up SSH (port 2222)..."
 if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ""
 fi
-sshd-keygen
+
+# Generate SSH host keys for sshd
+ssh-keygen -A
 
 cat >~/.ssh/sshd_config <<EOF
 Port 2222
