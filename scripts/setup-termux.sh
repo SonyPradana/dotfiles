@@ -1,12 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
+echo "===> Setup storage access..."
+termux-setup-storage
+
 echo "===> Updating packages..."
 pkg update -y && pkg upgrade -y
 
 echo "===> Installing tools..."
 pkg install -y openssh git neovim nodejs php composer \
-  make cmake lazygit fd ripgrep fzf
+  make cmake lazygit fd ripgrep fzf gh
 
 echo "===> Setting up SSH (port 2222)..."
 if [ ! -f ~/.ssh/id_rsa ]; then
