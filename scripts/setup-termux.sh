@@ -16,8 +16,10 @@ if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ""
 fi
 
-# Generate SSH host keys for sshd
-ssh-keygen -A
+echo "===> Generating SSH host keys..."
+# Menggunakan 'ssh-keygen -A' untuk menghasilkan kunci host yang hilang.
+# Jika gagal, hanya akan menampilkan pesan peringatan dan lanjut ke skrip berikutnya.
+ssh-keygen -A || echo "Gagal menghasilkan SSH host keys, lanjutkan skrip..."
 
 cat >~/.ssh/sshd_config <<EOF
 Port 2222
