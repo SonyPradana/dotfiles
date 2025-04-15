@@ -17,8 +17,6 @@ if [ ! -f ~/.ssh/id_rsa ]; then
 fi
 
 echo "===> Generating SSH host keys..."
-# Menggunakan 'ssh-keygen -A' untuk menghasilkan kunci host yang hilang.
-# Jika gagal, hanya akan menampilkan pesan peringatan dan lanjut ke skrip berikutnya.
 ssh-keygen -A || echo "Gagal menghasilkan SSH host keys, lanjutkan skrip..."
 
 cat >~/.ssh/sshd_config <<EOF
@@ -39,5 +37,18 @@ if [ -d "$NVIM_DIR" ]; then
 fi
 git clone https://github.com/LazyVim/starter "$NVIM_DIR"
 cd "$NVIM_DIR" && rm -rf .git
+
+echo "===> Setting custom php.ini..."
+PHP_INI_SRC="$HOME/php/php.ini"
+PHP_INI_DST="$PREFIX/etc/php/php.ini"
+
+mkdir -p "$(dirname "$PHP_INI_DST")"
+
+if [ -f "$PHP_INI_SRC" ]; then
+  cp "$PHP_INI_SRC" "$PHP_INI_DST"
+  echo "php.ini copied to $PHP_INI_DST"
+else
+  echo "WARNING: $PHP_INI_SRC not found, skipping..."
+fi
 
 echo "===> All done! SSH server running on port 2222."
