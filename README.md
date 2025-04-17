@@ -14,7 +14,7 @@ pkg up -y && pkg install chezmoi -y
 3. Setup dotfiles dengan satu baris perintah:
 
 ```bash
-chezmoi init --branch termux SonyPradana/dotfiles --apply
+chezmoi init SonyPradana/dotfiles --apply
 ```
 
 ## 🪟 Untuk Pengguna Windows
@@ -26,10 +26,10 @@ chezmoi init --branch termux SonyPradana/dotfiles --apply
 choco install chezmoi
 ```
 
-3. Setup dotfiles dengan branch windows:
+3. Setup dotfiles dengan satu baris perintah:
 
-```powershell
-chezmoi init --branch windows SonyPradana/dotfiles --apply
+```bash
+chezmoi init SonyPradana/dotfiles --apply
 ```
 
 ## ℹ️ Informasi Tambahan
