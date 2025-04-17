@@ -20,7 +20,7 @@ fi
 echo "===> Generating SSH host keys..."
 ssh-keygen -A || echo "Failed to generate SSH host keys, continuing script..."
 
-SSHD_CONFIG="$HOME/.dotfiles/.local/config/sshd/sshd_config"
+SSHD_CONFIG="$HOME/.local/config/sshd/sshd_config"
 if [ -f "$SSHD_CONFIG" ]; then
   mkdir -p ~/.ssh
   cp "$SSHD_CONFIG" ~/.ssh/sshd_config
