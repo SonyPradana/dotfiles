@@ -30,6 +30,7 @@ Port 2222
 PasswordAuthentication yes
 Subsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server
 EOF
+fi
 
 echo "===> Change your password now:"
 passwd
