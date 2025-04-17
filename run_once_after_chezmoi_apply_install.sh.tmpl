@@ -1,0 +1,22 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.os "android" }}
+
+chmod +x ~/.dotfiles/scripts/setup-termux.sh
+~/.dotfiles/scripts/setup-termux.sh
+
+read -p "Do you want to run MariaDB setup? (y/n) " choice
+case "$choice" in
+    y|Y ) chmod +x ~/.dotfiles/scripts/setup-mariadb.sh && ~/.dotfiles/scripts/setup-mariadb.sh;;
+    * ) echo "Skipping MariaDB setup.";;
+esac
+
+{{ else if eq .chezmoi.os "windows" }}
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$HOME\.dotfiles\scripts\setup-windows.sh"
+
+{{ else }}
+
+echo "OS tidak dikenali. Lewatkan setup otomatis."
+
+{{ end }}
