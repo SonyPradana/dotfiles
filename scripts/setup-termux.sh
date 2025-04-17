@@ -38,7 +38,7 @@ passwd
 sshd -f ~/.ssh/sshd_config
 
 echo "===> Installing LazyVim..."
-NVIM_DIR="$HOME/.local/nvim"
+NVIM_DIR="$HOME/.config/nvim"
 if [ -d "$NVIM_DIR" ]; then
   mv "$NVIM_DIR" "${NVIM_DIR}_backup_$(date +%s)"
 fi
