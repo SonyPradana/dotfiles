@@ -5,9 +5,17 @@
 chmod +x ~/scripts/setup-termux.sh
 ~/scripts/setup-termux.sh
 
-read -p "Do you want to run MariaDB setup? (y/n) " choice
-case "$choice" in
-    y|Y ) chmod +x ~/scripts/setup-mariadb.sh && ~/scripts/setup-mariadb.sh;;
+chmod +x ~/scripts/setup-apache
+read -p "Do you want to run Apache setup? (y/n) " apache_choice
+case "$apache_choice" in
+    y|Y ) ~/scripts/setup-apache;;
+    * ) echo "Skipping Apache setup.";;
+esac
+
+chmod +x ~/scripts/setup-mariadb.sh
+read -p "Do you want to run MariaDB setup? (y/n) " mariadb_choice
+case "$mariadb_choice" in
+    y|Y ) ~/scripts/setup-mariadb.sh;;
     * ) echo "Skipping MariaDB setup.";;
 esac
 
