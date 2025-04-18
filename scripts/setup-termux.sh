@@ -10,7 +10,7 @@ pkg up -y
 echo "===> Installing tools..."
 pkg install -y which make cmake openssh git \
     fzf ripgrep fd htop neofetch \
-    nodejs php composer lazygit neovim gh
+    nodejs-lts php composer lazygit neovim gh
 
 echo "===> Setting up SSH (port 2222)..."
 if [ ! -f ~/.ssh/id_rsa ]; then
