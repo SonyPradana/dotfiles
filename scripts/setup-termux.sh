@@ -20,7 +20,7 @@ fi
 echo "===> Generating SSH host keys..."
 ssh-keygen -A || echo "Failed to generate SSH host keys, continuing script..."
 
-SSHD_CONFIG="$HOME/.local/config/sshd_config"
+SSHD_CONFIG="$HOME/.config/ssh/sshd_config"
 if [ -f "$SSHD_CONFIG" ]; then
   mkdir -p ~/.ssh
   cp "$SSHD_CONFIG" ~/.ssh/sshd_config
@@ -46,7 +46,7 @@ git clone https://github.com/LazyVim/starter "$NVIM_DIR"
 cd "$NVIM_DIR" && rm -rf .git
 
 echo "===> Setting custom php.ini..."
-PHP_INI_SRC="$HOME/.local/php/php.ini"
+PHP_INI_SRC="$HOME/.config/php/php.ini"
 PHP_INI_DST="$PREFIX/etc/php/php.ini"
 
 mkdir -p "$(dirname "$PHP_INI_DST")"
