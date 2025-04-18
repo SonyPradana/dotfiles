@@ -33,7 +33,7 @@ EOF
 fi
 
 echo "===> Change your password now:"
-passwd
+passwd || echo "Password change failed, continuing..."
 
 sshd -f ~/.ssh/sshd_config
 
