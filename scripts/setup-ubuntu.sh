@@ -6,17 +6,8 @@ set -e
 sudo apt update
 
 # Install packages from apt
-sudo apt install -y \
-    which \
-    openssh-client \
-    htop \
-    neofetch \
-    make \
-    cmake \
-    fzf \
-    ripgrep \
-    fd-find \
-    neovim
+sudo apt install -y which openssh-client htop neofetch \
+    make cmake fzf ripgrep fd-find neovim
 
 # Install lazygit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')
