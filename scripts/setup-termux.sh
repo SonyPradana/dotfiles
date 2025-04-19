@@ -9,8 +9,8 @@ pkg up -y
 
 echo "===> Installing tools..."
 pkg install -y which openssh git htop neofetch gh \
-    make cmake fzf ripgrep fd lazygit neovim \
-    nodejs-lts composer
+  make cmake fzf ripgrep fd lazygit neovim \
+  nodejs-lts
 
 echo "===> Setting up SSH (port 2222)..."
 if [ ! -f ~/.ssh/id_rsa ]; then

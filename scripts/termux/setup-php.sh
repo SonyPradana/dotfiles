@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 echo "===> Setup PHP di Termux"
-pkg install -y php
+pkg install -y php composer
 
 PHP_INI_SRC="$HOME/.config/php/php.ini"
 PHP_INI_DST="$PREFIX/etc/php/php.ini"
