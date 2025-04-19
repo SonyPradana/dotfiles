@@ -23,8 +23,8 @@ fi
 
 # Update Apache configuration to use custom webroot and port
 APACHE_CONF="$PREFIX/etc/apache2/httpd.conf"
-sed -i 's|^DocumentRoot ".*"|DocumentRoot "$WEBROOT"|' "$APACHE_CONF"
-sed -i 's|^<Directory ".*">|<Directory "$WEBROOT">|' "$APACHE_CONF"
+sed -i "s|^DocumentRoot \".*\"|DocumentRoot \"$WEBROOT\"|" "$APACHE_CONF"
+sed -i "s|^<Directory \".*\">|<Directory \"$WEBROOT\">|" "$APACHE_CONF"
 
 # Add ServerName localhost to Apache configuration
 if ! grep -q "^ServerName localhost" "$APACHE_CONF"; then
