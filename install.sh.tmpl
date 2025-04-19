@@ -26,6 +26,11 @@ case "$mariadb_choice" in
     * ) echo "Skipping MariaDB setup.";;
 esac
 
+{{ else if eq .chezmoi.os "ubuntu" }}
+
+chmod +x ~/scripts/setup-ubuntu.sh
+~/scripts/setup-ubuntu.sh
+
 {{ else if eq .chezmoi.os "windows" }}
 
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$HOME\scripts\setup-windows.sh"
