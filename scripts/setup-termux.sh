@@ -8,9 +8,9 @@ echo "===> Updating packages..."
 pkg up -y
 
 echo "===> Installing tools..."
-pkg install -y which make cmake openssh git \
-    fzf ripgrep fd htop neofetch \
-    nodejs-lts php composer lazygit neovim gh
+pkg install -y which openssh git htop neofetch gh \
+    make cmake fzf ripgrep fd lazygit neovim \
+    nodejs-lts composer
 
 echo "===> Setting up SSH (port 2222)..."
 if [ ! -f ~/.ssh/id_rsa ]; then
@@ -45,21 +45,4 @@ fi
 git clone https://github.com/LazyVim/starter "$NVIM_DIR"
 cd "$NVIM_DIR" && rm -rf .git
 
-echo "===> Setting custom php.ini..."
-PHP_INI_SRC="$HOME/.config/php/php.ini"
-PHP_INI_DST="$PREFIX/etc/php/php.ini"
-
-mkdir -p "$(dirname "$PHP_INI_DST")"
-
-if [ -f "$PHP_INI_SRC" ]; then
-  cp "$PHP_INI_SRC" "$PHP_INI_DST"
-  echo "php.ini copied to $PHP_INI_DST"
-else
-  cat >"$PHP_INI_DST" <<EOF
-; Disable php deprecated message
-display_errors = On
-error_reporting = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED
-EOF
-fi
-
-echo "===> All done! SSH server running on port 2222."
+echo "===> All done! SSH server running on port 2222.\n"

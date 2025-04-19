@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
 # Update and upgrade packages
 pkg up -y
@@ -25,7 +25,6 @@ fi
 APACHE_CONF="$PREFIX/etc/apache2/httpd.conf"
 sed -i 's|^DocumentRoot ".*"|DocumentRoot "$WEBROOT"|' "$APACHE_CONF"
 sed -i 's|^<Directory ".*">|<Directory "$WEBROOT">|' "$APACHE_CONF"
-sed -i 's|^Listen 80|Listen 8000|' "$APACHE_CONF"
 
 # Restart Apache to apply changes
 apachectl restart
