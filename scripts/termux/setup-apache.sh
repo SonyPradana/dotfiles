@@ -1,7 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 pkg up -y
-
 pkg install apache2 -y
 
 apachectl start
@@ -15,12 +14,19 @@ ln -sf "$PREFIX/bin/apachectl" "$PREFIX/etc/init.d/apache2"
 mkdir -p "$HOME/www"
 
 APACHE_CONF="$HOME/.config/apache/termux_httpd.conf"
+TARGET_CONF="$PREFIX/etc/apache2/httpd.conf"
+BACKUP_CONF="$PREFIX/etc/apache2/backup_httpd.conf"
 
 if [ -f "$APACHE_CONF" ]; then
-  cp "$APACHE_CONF" "$PREFIX/etc/apache2/httpd.conf"
-  echo "Apache configuration copied to $PREFIX/etc/apache2/httpd.conf"
+  if [ -f "$TARGET_CONF" ]; then
+    cp "$TARGET_CONF" "$BACKUP_CONF"
+    echo "Backup konfigurasi asli disimpan di: $BACKUP_CONF"
+  fi
+
+  cp "$APACHE_CONF" "$TARGET_CONF"
+  echo "Konfigurasi baru disalin ke: $TARGET_CONF"
 fi
 
 apachectl restart
 
-echo "Apache berhasil diinstal dan dikonfigurasi."
+echo "Apache berhasil diinstal, dikonfigurasi, dan dijalankan.\n"
