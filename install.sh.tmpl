@@ -1,0 +1,42 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.os "android" }}
+
+chmod +x ~/scripts/setup-termux.sh
+~/scripts/setup-termux.sh
+
+chmod +x ~/scripts/termux/setup-php.sh
+read -p "Do you want to run PHP setup? (y/n) " apache_choice
+case "$apache_choice" in
+    y|Y ) ~/scripts/termux/setup-php.sh;;
+    * ) echo "Skipping PHP setup.";;
+esac
+
+chmod +x ~/scripts/termux/setup-apache.sh
+read -p "Do you want to run Apache setup? (y/n) " apache_choice
+case "$apache_choice" in
+    y|Y ) ~/scripts/termux/setup-apache.sh;;
+    * ) echo "Skipping Apache setup.";;
+esac
+
+chmod +x ~/scripts/termux/setup-mariadb.sh
+read -p "Do you want to run MariaDB setup? (y/n) " mariadb_choice
+case "$mariadb_choice" in
+    y|Y ) ~/scripts/termux/setup-mariadb.sh;;
+    * ) echo "Skipping MariaDB setup.";;
+esac
+
+{{ else if eq .chezmoi.os "ubuntu" }}
+
+chmod +x ~/scripts/setup-ubuntu.sh
+~/scripts/setup-ubuntu.sh
+
+{{ else if eq .chezmoi.os "windows" }}
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$HOME\scripts\setup-windows.sh"
+
+{{ else }}
+
+echo "OS tidak dikenali. Lewatkan setup otomatis."
+
+{{ end }}
