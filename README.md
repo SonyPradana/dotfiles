@@ -24,4 +24,4 @@ cargo install --locked tree-sitter-cli
 ```
 9. fzf, ripgrep, fd. semua juga tersedia di documntasinya.
 10. Untuk configurasi nvimnya saya setakan nanti.
-
+11. lain-lain. (fish).
