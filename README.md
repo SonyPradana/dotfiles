@@ -20,8 +20,15 @@ Berikut ini applikasi yang sudah terinstall
 sudo apt-get install libclang-dev
 cargo install --locked tree-sitter-cli
 ```
-```
-```
 9. fzf, ripgrep, fd. semua juga tersedia di documntasinya.
 10. Untuk configurasi nvimnya saya setakan nanti.
+11. instalasi docker. selanjutnya saya juga menggunakan docker untuk menginstall isolasi application.
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER
+# Install Docker Compose:
+sudo apt update
+sudo apt install docker-compose
+```
 11. lain-lain. (fish).
