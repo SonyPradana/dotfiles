@@ -1,34 +1,90 @@
-# Ini adalah dot file configurasi
-configurasi lain tanpa chezmoi, karana belum tahu bakal digunakan atau dilanjutkan atau tidak.
+Konfigurasi Sistem
 
-# Instalsi
-Belum ada masih manual sambil menunggu nanti seperti apa.
+Status Instalasi
 
-# What i use
-Berikut ini applikasi yang sudah terinstall
+Saat ini instalasi masih dilakukan secara manual, menunggu keputusan apakah akan menggunakan manajer konfigurasi seperti chezmoi di masa depan.
 
-1. zerotier. documentasi website sudah tersedia.
-2. gh. githubcli di apt sudah ada.
-3. nodejs. node js sudah tersedia di websitenya hanya saya menggunakan nvm untuk memilih versi nodejs (22 lts)
-4. pnpm. so pasti.
-5. bunjs. saya juga pakai most project saya pakai (dayly use).
-6. nvim. sayang apt tidak ada saya install dari sourcenya (script ada di dokumentasinya).
-7. lazygit. lazygit untuk archsitertur amrbian ini juga belum tersedia saya pakai costume bash script. Saya sudah sertakan di `.bashrc`.
-8. tree-sitter. sama seperti lazygit saya compile dari source, kebetulan pakai cargo (rust) dan rust sendiri butuh `clang-devel` otomatis saya sertakan. 
+Aplikasi yang Terinstal
 
-```bash
-sudo apt-get install libclang-dev
-cargo install --locked tree-sitter-cli
-```
-9. fzf, ripgrep, fd. semua juga tersedia di documntasinya.
-10. Untuk configurasi nvimnya saya setakan nanti.
-11. instalasi docker. selanjutnya saya juga menggunakan docker untuk menginstall isolasi application.
-```bash
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker $USER
-# Install Docker Compose:
-sudo apt update
-sudo apt install docker-compose
-```
-11. lain-lain. (fish).
+1. ZeroTier
+
+- Dokumentasi tersedia di website resmi
+
+2. GitHub CLI (gh)
+
+- Tersedia via package manager APT
+- Instalasi:
+  ```bash
+  sudo apt install gh
+  ```
+
+3. Node.js
+
+- Menggunakan NVM untuk manajemen versi
+- Versi yang digunakan: Node.js 22 LTS
+- Instalasi:
+  ```bash
+  nvm install 22
+  nvm use 22
+  ```
+
+4. Package Managers
+
+- pnpm - Package manager utama
+- bun - Digunakan untuk proyek sehari-hari
+
+5. Neovim
+
+- Diinstal dari source (karena tidak tersedia di APT untuk arsitektur ini)
+- Mengikuti script instalasi dari dokumentasi resmi
+
+6. Lazygit
+
+- Tidak tersedia untuk arsitektur Armbian
+- Menggunakan custom bash script (termasuk dalam .bashrc)
+
+7. Tree-sitter CLI
+
+- Dikompilasi dari source menggunakan Cargo
+- Prasyarat dan instalasi:
+  ```bash
+  sudo apt-get install libclang-dev
+  cargo install --locked tree-sitter-cli
+  ```
+
+8. Utilities
+
+- fzf - Fuzzy finder
+- ripgrep - Fast text search
+- fd - User-friendly find alternative
+
+9. Docker & Docker Compose
+
+- Instalasi Docker:
+  ```bash
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh
+  sudo usermod -aG docker $USER
+  ```
+- Instalasi Docker Compose:
+  ```bash
+  sudo apt update
+  sudo apt install docker-compose
+  ```
+
+10. Shell & Terminal
+
+- Fish shell (opsional)
+
+Catatan Konfigurasi
+
+- Konfigurasi Neovim akan diatur terpisah
+- Semua tools tersedia dengan dokumentasi masing-masing
+- Arsitektur sistem: Armbian (ARM-based)
+
+TODO / Pending
+
+- Setup konfigurasi Neovim lengkap
+- Evaluasi penggunaan chezmoi untuk manajemen konfigurasi
+- Setup otomatisasi instalasi
+- Setup docker: nextcloud 
