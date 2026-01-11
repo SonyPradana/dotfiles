@@ -1,0 +1,31 @@
+version: '3'
+
+networks:
+  shared-network:
+    external: true
+
+services:
+  nextcloud:
+    build: .
+    container_name: nextcloud
+    restart: always
+    networks:
+      - shared-network
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nextcloud_data:/var/www/html
+      - ./ssl:/etc/apache2/ssl
+      - ./apache-config.conf:/etc/apache2/sites-available/000-default.conf
+    environment:
+      - MYSQL_PASSWORD=NEXTCLOUD_DB_PASSWORD_PLACEHOLDER
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=mariadb-shared
+      - NEXTCLOUD_TRUSTED_DOMAINS=localhost ZEROTIER_IP_PLACEHOLDER 192.168.0.0/16
+      - APACHE_DISABLE_REWRITE_IP=1
+      - APACHE_BODY_LIMIT=1073741824
+      - PHP_MEMORY_LIMIT=512M
+      - PHP_UPLOAD_LIMIT=512M
+    mem_limit: 1200m
