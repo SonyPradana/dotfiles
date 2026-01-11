@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  shared-network:
+    name: shared-network
+    driver: bridge
+
+services:
+  mariadb:
+    image: mariadb:10.11
+    container_name: mariadb-shared
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    networks:
+      - shared-network
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=MARIADB_ROOT_PASSWORD_PLACEHOLDER
+      - TZ=Asia/Jakarta
+    mem_limit: 512m
