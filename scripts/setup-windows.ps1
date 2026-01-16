@@ -21,7 +21,7 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 # Install applications using Chocolatey
 Write-Host "Installing applications with Chocolatey..."
 choco install -y `
-    nodejs-lts `
+    nodejs --version="22.22.0" `
     git `
     gh `
     lazygit `
@@ -29,7 +29,7 @@ choco install -y `
     fzf `
     ripgrep `
     fd `
-    neovim `
+    neovim
 
 # Enable Corepack & install pnpm
 if (Get-Command corepack -ErrorAction SilentlyContinue) {
