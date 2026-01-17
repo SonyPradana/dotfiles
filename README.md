@@ -2,7 +2,27 @@
 
 ## Status Instalasi
 
-Saat ini instalasi masih dilakukan secara manual, menunggu keputusan apakah akan menggunakan manajer konfigurasi seperti chezmoi di masa depan.
+Saat ini, sebagian besar instalasi aplikasi yang tercantum di bawah ini dapat diotomatisasi menggunakan skrip `setup_armbian.sh`. Manajer konfigurasi seperti chezmoi masih dalam evaluasi untuk manajemen konfigurasi yang lebih luas di masa mendatang.
+
+## Setup Otomatis
+
+Untuk menginstal sebagian besar aplikasi yang dibutuhkan secara otomatis, Anda dapat menggunakan skrip `setup_armbian.sh`.
+
+**Langkah-langkah penggunaan:**
+
+1.  **Berikan izin eksekusi pada skrip:**
+    ```bash
+    chmod +x setup_armbian.sh
+    ```
+
+2.  **Jalankan skrip:**
+    ```bash
+    ./setup_armbian.sh
+    ```
+
+**Catatan Penting Setelah Menjalankan Skrip:**
+*   Setelah skrip selesai, Anda mungkin perlu **logout dan login kembali** agar perubahan pada grup Docker (untuk user) dan `PATH` (untuk NVM dan `~/.local/bin/fd`) diterapkan sepenuhnya.
+*   Untuk menggunakan fungsi `update-lazygit` yang ditambahkan ke `~/.bashrc`, Anda perlu menjalankan `source ~/.bashrc` di terminal yang sedang berjalan, atau cukup buka sesi terminal baru.
 
 ## Aplikasi yang Terinstal
 
