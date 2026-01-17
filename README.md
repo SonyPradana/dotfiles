@@ -130,6 +130,48 @@ Untuk menginstal sebagian besar aplikasi yang dibutuhkan secara otomatis, Anda d
     sudo apt install docker-compose
     ```
 
+## Instalasi Nextcloud (Docker)
+
+Repositori ini menyertakan skrip untuk menginstal Nextcloud secara otomatis menggunakan Docker dan Docker Compose.
+
+**Prasyarat:**
+
+Sebelum menjalankan skrip, Anda harus membuat file konfigurasi `docker/config.sh`.
+
+1.  Buka direktori `docker`:
+    ```bash
+    cd docker
+    ```
+
+2.  Buat file bernama `config.sh`. Anda bisa menggunakan editor teks seperti `nano` atau `vim`.
+
+3.  Isi file tersebut dengan variabel berikut. **Ganti nilai-nilai di bawah ini dengan nilai Anda sendiri yang aman.**
+
+    ```bash
+    #!/bin/bash
+    # Ganti dengan alamat IP ZeroTier Anda
+    ZEROTIER_IP="10.10.10.1"
+
+    # Direktori dasar untuk data Docker (Nextcloud dan MariaDB)
+    DOCKER_BASE_DIR="$HOME/docker-data"
+
+    # Ganti dengan password root MariaDB yang kuat
+    MARIADB_ROOT_PASSWORD="ganti_dengan_password_root_yang_aman"
+
+    # Ganti dengan password untuk user database Nextcloud yang kuat
+    NEXTCLOUD_DB_PASSWORD="ganti_dengan_password_db_nextcloud_yang_aman"
+    ```
+
+**Menjalankan Skrip Instalasi:**
+
+Setelah `config.sh` dibuat dan disimpan, Anda dapat menjalankan skrip instalasi dari dalam direktori `docker`:
+
+```bash
+./install.sh
+```
+
+Skrip akan mengatur kontainer MariaDB dan Nextcloud, menghasilkan sertifikat SSL self-signed, dan memulai layanan.
+
 ## Catatan Konfigurasi
 
 - Konfigurasi Neovim akan diatur terpisah
